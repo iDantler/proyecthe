@@ -1,0 +1,230 @@
+/* Agrega estilos del modal aquí */
+#myModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: auto;
+}
+
+/* Agrega estos estilos a tu archivo style.css o crea un nuevo archivo para los estilos del modal */
+.custom-modal {
+    background-color: #f9f9f9; /* Color de fondo del modal en modo claro */
+    padding: 14px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 120%; /* Ancho del modal aumentado en un 20% */
+    max-width: 550px; /* Ancho máximo del modal aumentado en un 35% */
+    border: 1px solid #888;
+    margin: 15px auto; /* Mayor espacio superior e inferior */
+    color: #333333; /* Color del texto en modo claro */
+}
+
+/* Estilos específicos para el modo oscuro */
+body.dark-theme .custom-modal {
+    background-color: #333333; /* Color de fondo del modal en modo oscuro */
+    color: #ffffff; /* Color del texto en modo oscuro */
+}
+
+.custom-modal h2,
+.custom-modal h3 {
+    font-size: 16.15px; /* Tamaño del texto reducido en un 5% */
+    color: inherit; /* Hereda el color del texto del elemento padre (puede ser el color del texto en modo claro u oscuro) */
+}
+
+.custom-modal p {
+    font-size: 11px; /* Tamaño del texto reducido más específicamente para el párrafo */
+    margin-top: -9px; /* Ajusta este valor según sea necesario para reducir el espacio superior del párrafo */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+}
+
+/* Estilos específicos para los elementos en modo oscuro */
+body.dark-theme #modal-help h3,
+body.dark-theme #modal-introduction h3,
+body.dark-theme #modal-general h3,
+body.dark-theme #modal-post h3,
+body.dark-theme #modal-off-topic h3,
+body.dark-theme #modal-informatica h3,
+body.dark-theme #modal-redes-sociales h3,
+body.dark-theme #modal-gaming h3,
+body.dark-theme #modal-emprendimiento h3,
+body.dark-theme #modal-programacion h3,
+body.dark-theme #modal-hacking h3,
+body.dark-theme #modal-moviles h3 {
+    color: #2b6697; /* Cambia el color del texto para los elementos específicos en modo oscuro */
+}
+
+body.dark-theme #modal-help p,
+body.dark-theme #modal-introduction p,
+body.dark-theme #modal-general p,
+body.dark-theme #modal-post p,
+body.dark-theme #modal-off-topic p,
+body.dark-theme #modal-informatica p,
+body.dark-theme #modal-redes-sociales p,
+body.dark-theme #modal-gaming p,
+body.dark-theme #modal-emprendimiento p,
+body.dark-theme #modal-programacion p,
+body.dark-theme #modal-hacking p,
+body.dark-theme #modal-moviles p {
+    color: #8a8a8a; /* Cambia el color del texto para los elementos específicos en modo oscuro */
+}
+
+.modal-divider {
+    margin-top: 12px; /* Espacio superior de la línea de división */
+    margin-bottom: 12px; /* Espacio inferior de la línea de división */
+    border: 1px solid #ccc; /* Estilo de la línea de división */
+}
+
+/*Esto es para "Publicar tema"*/
+#publish-title {
+    margin-top: 0; /* Establece el margen superior a 0 para pegar el título al elemento padre */
+    /* Otros estilos específicos para este título si es necesario */
+}
+
+/* Estilos para Ayuda de la Comunidad y Presentaciones */
+#modal-help,
+#modal-introduction {
+    margin-top: 12px; /* Ajusta el margen superior según sea necesario */
+    transition: background-color 0.3s; /* Agrega una transición suave al cambio de color de fondo */
+    cursor: pointer; /* Cambia el cursor al estilo de la mano para indicar que es interactivo */
+}
+
+#modal-help:hover,
+#modal-introduction:hover {
+    background-color: #e6e6e6; /* Cambia el color de fondo cuando el mouse está sobre la sección */
+}
+
+#modal-help h3,
+#modal-introduction h3,
+#modal-help p {
+    font-size: 14px; /* Tamaño del texto para Ayuda de la Comunidad y Presentaciones */
+}
+
+#modal-help p,
+#modal-introduction p {
+    font-size: 11px;
+}
+
+#modal-help:hover h3,
+#modal-introduction:hover h3 {
+    text-decoration: underline; /* Subraya el título solo cuando el mouse está sobre la div */
+    color: #0066cc; /* Cambia el color del texto solo cuando el mouse está sobre la div */
+}
+
+/* Estilos para el nuevo cuadro "General" */
+#modal-general {
+    margin-top: 12px; /* Ajusta el margen superior según sea necesario */
+    transition: background-color 0.3s; /* Agrega una transición suave al cambio de color de fondo */
+    cursor: pointer; /* Cambia el cursor al estilo de la mano para indicar que es interactivo */
+}
+
+#modal-general:hover {
+    background-color: #e6e6e6; /* Cambia el color de fondo cuando el mouse está sobre la sección */
+}
+
+#modal-general h3,
+#modal-general p {
+    font-size: 14px; /* Tamaño del texto para el cuadro "General" */
+}
+
+#modal-general p {
+    font-size: 11px;
+}
+
+#modal-general:hover h3 {
+    text-decoration: underline; /* Subraya el título solo cuando el mouse está sobre la div */
+    color: #0066cc; /* Cambia el color del texto solo cuando el mouse está sobre la div */
+}
+
+/* Estilos para las nuevas divisiones */
+#modal-off-topic,
+#modal-informatica,
+#modal-redes-sociales,
+#modal-gaming {
+    margin-top: 12px; /* Ajusta el margen superior según sea necesario */
+    transition: background-color 0.3s; /* Agrega una transición suave al cambio de color de fondo */
+    cursor: pointer; /* Cambia el cursor al estilo de la mano para indicar que es interactivo */
+}
+
+#modal-off-topic:hover,
+#modal-informatica:hover,
+#modal-redes-sociales:hover,
+#modal-gaming:hover {
+    background-color: #e6e6e6; /* Cambia el color de fondo cuando el mouse está sobre la sección */
+}
+
+#modal-off-topic h3,
+#modal-paridas h3,
+#modal-informatica h3,
+#modal-redes-sociales h3,
+#modal-gaming h3,
+#modal-off-topic p,
+#modal-informatica p,
+#modal-redes-sociales p,
+#modal-gaming p {
+    font-size: 14px; /* Tamaño del texto para las nuevas divisiones */
+}
+
+#modal-off-topic p,
+#modal-informatica p,
+#modal-redes-sociales p,
+#modal-gaming p {
+    font-size: 11px;
+}
+
+#modal-off-topic:hover h3,
+#modal-informatica:hover h3,
+#modal-redes-sociales:hover h3,
+#modal-gaming:hover h3 {
+    text-decoration: underline; /* Subraya el título solo cuando el mouse está sobre la div */
+    color: #0066cc; /* Cambia el color del texto solo cuando el mouse está sobre la div */
+}
+
+/* Estilos para las nuevas divisiones */
+#modal-emprendimiento,
+#modal-programacion,
+#modal-hacking,
+#modal-moviles {
+    margin-top: 12px; /* Ajusta el margen superior según sea necesario */
+    transition: background-color 0.3s; /* Agrega una transición suave al cambio de color de fondo */
+    cursor: pointer; /* Cambia el cursor al estilo de la mano para indicar que es interactivo */
+}
+
+#modal-emprendimiento:hover,
+#modal-programacion:hover,
+#modal-hacking:hover,
+#modal-moviles:hover {
+    background-color: #e6e6e6; /* Cambia el color de fondo cuando el mouse está sobre la sección */
+}
+
+#modal-emprendimiento h3,
+#modal-programacion h3,
+#modal-hacking h3,
+#modal-moviles h3,
+#modal-emprendimiento p,
+#modal-programacion p,
+#modal-hacking p,
+#modal-moviles p {
+    font-size: 14px; /* Tamaño del texto para las nuevas divisiones */
+}
+
+#modal-emprendimiento p,
+#modal-programacion p,
+#modal-hacking p,
+#modal-moviles p {
+    font-size: 11px;
+}
+
+#modal-emprendimiento:hover h3,
+#modal-programacion:hover h3,
+#modal-hacking:hover h3,
+#modal-moviles:hover h3 {
+    text-decoration: underline; /* Subraya el título solo cuando el mouse está sobre la div */
+    color: #0066cc; /* Cambia el color del texto solo cuando el mouse está sobre la div */
+}

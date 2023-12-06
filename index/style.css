@@ -1,0 +1,281 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e1d2; 
+    color: #1c3168; 
+    transition: background-color 0.5s ease; 
+}
+
+body.loaded {
+    transition: none;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #e0e1d2; 
+    color: #1c3168; 
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s ease; 
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 50px;
+    height: auto;
+}
+
+.user-container {
+    text-align: right;
+}
+
+.user-container p {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.forum-thread,
+#create-thread-btn {
+    border-radius: 8px;
+    transition: background-color 0.3s ease; 
+}
+
+.forum-thread {
+    margin-top: 20px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#create-thread-btn {
+    background-color: #1c3168;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 30px auto;
+}
+
+#create-thread-btn:hover {
+    background-color: #0e214e;
+}
+
+
+.forum-category {
+    background-color: #1c3168;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    margin: 0 15px;
+    margin-bottom: 30px;
+}
+
+.forum-category h2 {
+    color: #ffff;
+}
+
+.forum-thread:hover {
+    background-color: #bdbdbd;
+}
+
+.forum-thread h3 {
+    color: #1c3168;
+}
+
+section {
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+
+/*botones de iniciar, registar y cerrar sesión*/
+.btn {
+    display: inline-block;
+    background-color: #1c3168;
+    color: white;
+    padding: 5px 10px; 
+    margin: 10px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease; 
+    font-size: 0.8em; 
+}
+
+.btn:hover {
+    background-color: #0e214e;
+}
+
+
+/* Estilos para la barra de navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #1c3168;
+    text-decoration: none;
+}
+
+/*Aqui empieza mi css para la barra de busqueda*/
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.search-btn {
+    background-color: #1c3168;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0e214e;
+}
+
+.search-container input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 0;
+    opacity: 0;
+    outline: none;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.search-container.show-input input {
+    width: 150px;
+    opacity: 1;
+    margin: 10px;
+}
+
+footer {
+    background-color: #e0e1d2;
+    color: #1c3168;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 3px solid #1c3168;
+}
+
+
+
+/* Botón para cambiar los temas de la página */
+#theme-icon {
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+/* Tema oscuro empieza aquí */
+body.dark-theme {
+    background-color: #0a0a0a; /* Cambia el color de fondo a #0a0a0a */
+    color: #ffffff; /* Cambia el color del texto a #ffffff */
+}
+
+/* Forum Category */
+body.dark-theme .forum-category {
+    background-color: transparent; /* Fondo transparente en modo oscuro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Conservamos la sombra si es necesario */
+    border: 1px solid #3f3f3f; /* Borde azul en modo oscuro */
+}
+
+/* Header */
+body.dark-theme header {
+    background-color: #000000; /* Cambia el color de fondo a #0a0a0a */
+    color: #ffffff; /* Cambia el color del texto a #ffffff */
+}
+
+/* Search Button */
+body.dark-theme .search-btn {
+    background-color: transparent;
+    border: 1px solid #3f3f3f;
+}
+
+body.dark-theme .search-btn:hover {
+    background-color: #222222;
+}
+
+body.dark-theme footer,
+body.dark-theme .forum-thread,
+body.dark-theme #create-thread-btn {
+    background-color: #2c2c2c; /* Cambia el color de fondo en modo oscuro */
+    color: #ffffff; /* Cambia el color del texto en modo oscuro a blanco */
+}
+
+body.dark-theme footer {
+    background-color: #000000; /* Gris claro */
+    color: #ffffff; /* Negro */
+    border-top: 3px solid #ffffff;
+}
+
+/* Boton para cerrar e iniciar sesion */
+body.dark-theme .btn {
+    background-color: transparent; /* Fondo transparente */
+    color: #FFFFFF; /* Color del texto blanco */
+    border: 1px solid #3f3f3f; /* Borde azul */
+}
+
+body.dark-theme .btn:hover {
+    background-color: #222222; /* Cambio de color al pasar el mouse */
+}
+
+/* Lupa de navegación */
+body.dark-theme .search-container {
+    transition: background-color 0.5s ease; /* Agregamos transición en modo oscuro */
+}
+
+body.dark-theme .search-container input {
+    border: none;
+    border-radius: 5px; /* Conservo el borde redondeado */
+    background-color: #2c2c2c; /* Cambia el color de fondo en modo oscuro */
+    color: #E2E2E2; /* Cambia el color del texto en modo oscuro a blanco */
+}
+/* Categorias */
+body.dark-theme .forum-thread:hover,
+body.dark-theme #create-thread-btn:hover {
+    background-color: #757575; /* Cambia el color de fondo al pasar el mouse en modo oscuro */
+}
+
+body.dark-theme #create-thread-btn:hover {
+    background-color: #4d4d4d; /* Cambia el color de fondo al pasar el mouse en modo oscuro */
+}
+
+body.dark-theme .forum-thread h3,
+body.dark-theme .forum-category {
+    color: #ffffff; /* Cambia el color del texto en modo oscuro a blanco */
+}
+
+
