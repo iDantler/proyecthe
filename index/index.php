@@ -9,8 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="modal/style_modal.css">
-    
-</head>
+    <link rel="stylesheet" href="dropdown/style-dropdown.css">
+    </head>
 
 <body>
         <header>
@@ -24,13 +24,19 @@
                     <button class="search-btn" onclick="toggleSearchInput()"><i class="fas fa-search"></i></button>
                 </div>
 
-
+                <!-- Dentro de tu encabezado -->
                 <div class="user-container">
                     <?php
                     session_start();
                     if (isset($_SESSION['username'])) {
+                        echo '<div class="dropdown">';
                         echo '<p>Bienvenido, <strong>' . $_SESSION['username'] . '</strong>.</p>';
-                        echo '<p><a href="../logout/logout.php" class="btn">Cerrar sesión</a></p>';
+                        echo '<div class="dropdown-content">';
+                        echo '<a href="profile/profile.php">Mi perfil</a>';
+                        echo '<a href="settings.php">Configuración</a>';
+                        echo '<a href="../logout/logout.php" class="btn">Cerrar sesión</a>';
+                        echo '</div>';
+                        echo '</div>';
                     } else {
                         echo '<p id="login-link"><a href="../login_forum/login.php" class="btn">Iniciar sesión</a> | <a href="../register_forum/register.php" class="btn">Registrarse</a></p>';
                     }
@@ -198,9 +204,9 @@
         <i id="theme-icon" class="fas fa-sun"></i>
 
 </footer>
-
 <script src="lupin.js"></script>
 <script src="modal/modal.js"></script>
+<script src="dropdown/dropdown.js"></script>
 
 </body>
 </html>

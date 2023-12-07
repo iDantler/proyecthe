@@ -1,0 +1,51 @@
+/* Estilos para el perfil */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e1d2; 
+    color: #1c3168; 
+    transition: background-color 0.5s ease; 
+}
+
+main {
+    margin: 20px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-info h1 {
+    color: #1c3168;
+}
+
+.user-info p {
+    color: #757575;
+}
+
+.user-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h2 {
+    color: #1c3168;
+}
+
+.stat p {
+    color: #757575;
+}

@@ -62,12 +62,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    
+
     function getDarkModePreference() {
+        const baseUrl = 'http://localhost/pro/index/';
         // Realiza una solicitud AJAX para obtener la preferencia del modo oscuro del servidor
-        fetch('get-dark-mode-preference.php', {
+        fetch(`${baseUrl}get-dark-mode-preference.php`, {
             method: 'GET',
-            credentials: 'include',  // Agrega esta línea para incluir las cookies en la solicitud
-        })
+            credentials: 'include',
+            })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('La solicitud no pudo ser completada correctamente');
@@ -107,10 +110,11 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function sendDarkModePreference(isDarkModeEnabled) {
         try {
+            const baseUrl = 'http://localhost/pro/index/';
             // Aquí deberías realizar una solicitud AJAX para enviar el estado al servidor
             // Puedes usar fetch o cualquier biblioteca AJAX como Axios.
             // Ejemplo con fetch:
-            fetch('save-dark-mode.php', {
+            fetch(`${baseUrl}save-dark-mode.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
