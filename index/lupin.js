@@ -4,7 +4,6 @@ function toggleSearchInput() {
     searchContainer.classList.toggle('show-input');
 }
 
-// Esto es para el modo negro y claro
 document.addEventListener('DOMContentLoaded', function () {
     var icon = document.getElementById('theme-icon');
     var body = document.body;
@@ -14,10 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     body.classList.add('loaded');
 
-    // Verifica el estado del modo oscuro en el almacenamiento local
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        enableDarkMode();
-    }
+    // Obtiene la preferencia del modo oscuro del servidor al cargar la página
+    getDarkModePreference();
 
     icon.addEventListener('click', function () {
         icon.classList.add('fa-spin');
@@ -32,28 +29,101 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function enableDarkMode() {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        body.classList.add('dark-theme');
-        header.classList.add('dark-theme');
-        footer.classList.add('dark-theme');
-        buttons.forEach(function (button) {
-            button.classList.add('dark-theme');
-        });
-        // Guarda el estado en el almacenamiento local
-        localStorage.setItem('darkMode', 'enabled');
+        try {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            body.classList.add('dark-theme');
+            header.classList.add('dark-theme');
+            footer.classList.add('dark-theme');
+            buttons.forEach(function (button) {
+                button.classList.add('dark-theme');
+            });
+            // Envía el estado del modo oscuro al servidor al cambiar
+            sendDarkModePreference(true);
+        } catch (error) {
+            console.error('Error en enableDarkMode:', error);
+        }
     }
 
     function disableDarkMode() {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        body.classList.remove('dark-theme');
-        header.classList.remove('dark-theme');
-        footer.classList.remove('dark-theme');
-        buttons.forEach(function (button) {
-            button.classList.remove('dark-theme');
-        });
-        // Guarda el estado en el almacenamiento local
-        localStorage.setItem('darkMode', null);
+        try {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            body.classList.remove('dark-theme');
+            header.classList.remove('dark-theme');
+            footer.classList.remove('dark-theme');
+            buttons.forEach(function (button) {
+                button.classList.remove('dark-theme');
+            });
+            // Envía el estado del modo oscuro al servidor al cambiar
+            sendDarkModePreference(false);
+        } catch (error) {
+            console.error('Error en disableDarkMode:', error);
+        }
+    }
+
+    function getDarkModePreference() {
+        // Realiza una solicitud AJAX para obtener la preferencia del modo oscuro del servidor
+        fetch('get-dark-mode-preference.php', {
+            method: 'GET',
+            credentials: 'include',  // Agrega esta línea para incluir las cookies en la solicitud
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('La solicitud no pudo ser completada correctamente');
+                }
+                return response.text(); // Cambiamos a response.text() para manejar la respuesta como texto
+            })
+            .then(data => {
+                try {
+                    if (data.trim() !== "") {
+                        const jsonData = JSON.parse(data);
+                        if (jsonData.success) {
+                            // Aplica el modo oscuro según la preferencia obtenida del servidor
+                            if (jsonData.darkMode) {
+                                enableDarkMode();
+                            } else {
+                                disableDarkMode();
+                            }
+                        } else {
+                            console.error('Error en la respuesta del servidor:', jsonData.message);
+                        }
+                    } else {
+                        console.error('La respuesta del servidor está vacía.');
+                    }
+                } catch (error) {
+                    console.error('Error al analizar la respuesta JSON:', error.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error.message);
+                console.error('Error stack:', error.stack);
+                return Promise.reject(error); // Agregamos esta línea para propagar el error
+            });
+    }
+    
+    function sendDarkModePreference(isDarkModeEnabled) {
+        try {
+            // Aquí deberías realizar una solicitud AJAX para enviar el estado al servidor
+            // Puedes usar fetch o cualquier biblioteca AJAX como Axios.
+            // Ejemplo con fetch:
+            fetch('save-dark-mode.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ darkMode: isDarkModeEnabled }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('La solicitud no pudo ser completada correctamente');
+                    }
+                    return response.json();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        } catch (error) {
+            console.error('Error en sendDarkModePreference:', error);
+        }
     }
 });
