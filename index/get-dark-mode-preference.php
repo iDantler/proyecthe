@@ -4,6 +4,13 @@
 // Inicia la sesión
 session_start();
 
+// Verifica si la sesión está iniciada antes de acceder a $_SESSION['id']
+if(!isset($_SESSION['id'])) {
+    $response = ["success" => false, "message" => "Sesión no iniciada"];
+    echo json_encode($response);
+    exit();  // Sale del script si la sesión no está iniciada
+}
+
 // Configuración de la conexión a la base de datos
 $servername = "localhost";
 $username = "dantler";
@@ -21,24 +28,20 @@ if ($conn->connect_error) {
     $sql = "SELECT dark_mode FROM usuarios WHERE id = ?";
 
     // Obtén el ID del usuario desde la sesión
-    $userId = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+    $userId = $_SESSION['id'];
 
-    if ($userId !== null) {
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-        $stmt->bind_result($darkMode);
-        $stmt->fetch();
-        $stmt->close();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($darkMode);
+    $stmt->fetch();
+    $stmt->close();
 
-        if ($darkMode !== null) {
-            $response = ["success" => true, "darkMode" => (bool) $darkMode];
-        } else {
-            // Si no se encuentra la preferencia, asume que el modo oscuro está desactivado
-            $response = ["success" => true, "darkMode" => false];
-        }
+    if ($darkMode !== null) {
+        $response = ["success" => true, "darkMode" => (bool) $darkMode];
     } else {
-        $response = ["success" => false, "message" => "ID de usuario no válido"];
+        // Si no se encuentra la preferencia, asume que el modo oscuro está desactivado
+        $response = ["success" => true, "darkMode" => false];
     }
 
     // Cierra la conexión

@@ -86,21 +86,24 @@ document.addEventListener('DOMContentLoaded', function () {
                                 disableDarkMode();
                             }
                         } else {
-                            console.error('Error en la respuesta del servidor:', jsonData.message);
+                            // No mostrar mensaje si hay un error en la respuesta del servidor
+                            // console.error('Error en la respuesta del servidor:', jsonData.message);
                         }
-                    } else {
-                        console.error('La respuesta del servidor está vacía.');
-                    }
+                    } // No mostrar mensaje si la respuesta está vacía
                 } catch (error) {
-                    console.error('Error al analizar la respuesta JSON:', error.message);
+                    // No mostrar mensaje si hay un error al analizar la respuesta JSON
+                    // console.error('Error al analizar la respuesta JSON:', error.message);
                 }
             })
             .catch(error => {
-                console.error('Error en la solicitud:', error.message);
-                console.error('Error stack:', error.stack);
+                // No mostrar mensaje si hay un error en la solicitud
+                // console.error('Error en la solicitud:', error.message);
+                // console.error('Error stack:', error.stack);
                 return Promise.reject(error); // Agregamos esta línea para propagar el error
             });
     }
+    
+    
     
     function sendDarkModePreference(isDarkModeEnabled) {
         try {
