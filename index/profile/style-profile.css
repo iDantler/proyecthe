@@ -12,40 +12,56 @@ main {
     margin: 20px;
 }
 
+/* Estilos para el contenedor del perfil */
 .profile-container {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
+/* Estilos para la sección de información del usuario */
 .user-info {
-    text-align: center;
+    flex: 1;
 }
 
-.user-info h1 {
-    color: #1c3168;
+.profile-picture {
+    width: 100px; /* Ajusta el tamaño según tus necesidades */
+    height: 100px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%; /* Para que sea redonda, puedes ajustar según tus preferencias */
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
-.user-info p {
-    color: #757575;
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
 }
 
+p {
+    font-size: 16px;
+    color: #555555;
+}
+
+/* Estilos para la sección de estadísticas del usuario */
 .user-stats {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
 }
 
 .stat {
     text-align: center;
+    margin-right: 20px;
 }
 
-.stat h2 {
-    color: #1c3168;
+h2 {
+    font-size: 18px;
+    color: #333333;
 }
 
-.stat p {
-    color: #757575;
+p {
+    font-size: 16px;
+    color: #555555;
 }

@@ -31,6 +31,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
+            // Obtener el ID del usuario recién creado
+            $userId = $conn->insert_id;
+
+            // Insertar en la tabla 'perfiles' con el ID del usuario
+            $sqlPerfil = "INSERT INTO perfiles (usuario_id, foto_perfil, descripcion, publicaciones, seguidores, seguidos) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmtPerfil = $conn->prepare($sqlPerfil);
+            $stmtPerfil->bind_param("isiiii", $userId, $fotoPerfil, $descripcion, $publicaciones, $seguidores, $seguidos);
+
+            // Asignar valores a las variables
+            $fotoPerfil = "ruta_default_foto_perfil.jpg";
+            $descripcion = "¡Bienvenido a mi perfil!";
+            $publicaciones = 0;
+            $seguidores = 0;
+            $seguidos = 0;
+
+            // Ejecutar la inserción en la tabla 'perfiles'
+            $stmtPerfil->execute();
+
+            // Cerrar la conexión y el statement
+            $stmtPerfil->close();
+
             $response = ["registro" => "exitoso"];
         } else {
             $response = ["registro" => "error"];
