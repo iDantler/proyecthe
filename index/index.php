@@ -22,8 +22,6 @@
                 <div class="search-container">
                     <input type="text" id="campoBusqueda" placeholder="Buscar...">
                     <button class="search-btn" onclick="toggleSearchInput()"><i class="fas fa-search"></i></button>
-                </div>
-
                 <!-- Dentro de tu encabezado -->
                 <div class="user-container">
                     <?php

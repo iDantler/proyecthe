@@ -1,6 +1,4 @@
 <?php
-// profile.php
-
 // Define la ruta base
 $rutaBase = 'http://localhost/pro/index/';
 
